@@ -1,0 +1,36 @@
+<!-- 导航栏 -->
+<header id="navbar" class="fixed w-full z-50 transition-all duration-500">
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center bg-white/80 bg-blur rounded-b-2xl shadow-sm">
+    <a href="/" class="flex items-center space-x-2">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+        <i class="fa fa-cloud text-white text-xl"></i>
+      </div>
+      <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">天空云</span>
+    </a>
+    
+    <!-- 桌面导航 -->
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="/" class="font-medium hover:text-primary transition-colors">首页</a>
+      <a href="/journal.html" class="font-medium hover:text-primary transition-colors">生活记录</a>
+      <a href="/quotes.html" class="font-medium hover:text-primary transition-colors">优美文段</a>
+      <a href="/photos.html" class="font-medium hover:text-primary transition-colors">摄影作品</a>
+      <a href="/about.html" class="font-medium hover:text-primary transition-colors">关于我</a>
+    </div>
+    
+    <!-- 移动端菜单按钮 -->
+    <button id="menuBtn" class="md:hidden text-2xl">
+      <i class="fa fa-bars"></i>
+    </button>
+  </nav>
+  
+  <!-- 移动端导航菜单 -->
+  <div id="mobileMenu" class="md:hidden hidden bg-white/95 bg-blur absolute w-full shadow-lg rounded-b-2xl">
+    <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+      <a href="/" class="font-medium hover:text-primary transition-colors py-2">首页</a>
+      <a href="/journal.html" class="font-medium hover:text-primary transition-colors py-2">生活记录</a>
+      <a href="/quotes.html" class="font-medium hover:text-primary transition-colors py-2">优美文段</a>
+      <a href="/photos.html" class="font-medium hover:text-primary transition-colors py-2">摄影作品</a>
+      <a href="/about.html" class="font-medium hover:text-primary transition-colors py-2">关于我</a>
+    </div>
+  </div>
+</header>

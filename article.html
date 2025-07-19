@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章标题 | 天空云</title>
+  <meta name="description" content="文章描述">
+  <meta name="keywords" content="文章关键词">
+  
+  <!-- Open Graph 标签 -->
+  <meta property="og:title" content="文章标题 | 天空云">
+  <meta property="og:description" content="文章描述">
+  <meta property="og:image" content="文章封面图片URL">
+  <meta property="og:url" content="文章URL">
+  
+  <!-- 文章结构化数据 -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "文章标题",
+      "image": "文章封面图片URL",
+      "datePublished": "发布日期",
+      "dateModified": "修改日期",
+      "author": {
+        "@type": "Person",
+        "name": "Tate"
+      }
+    }
+  </script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="/styles/global.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#69B1FF',
+            accent: '#36CFC9',
+            neutral: '#F5F7FA',
+            dark: '#1D2129',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+</head>
+<body class="font-inter bg-neutral text-dark min-h-screen">
+  <!-- 导入页头 -->
+  <div id="header-placeholder"></div>
+
+  <!-- 文章内容 -->
+  <article class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- 文章头部 -->
+        <header class="mb-12 text-center">
+          <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">文章标题</h1>
+          <div class="flex items-center justify-center space-x-6 text-gray-600">
+            <span><i class="fa fa-calendar-o mr-2"></i>发布日期</span>
+            <span><i class="fa fa-folder-o mr-2"></i>分类</span>
+            <span><i class="fa fa-eye mr-2"></i>阅读量</span>
+          </div>
+        </header>
+
+        <!-- 文章封面图 -->
+        <div class="mb-12 rounded-2xl overflow-hidden shadow-lg">
+          <img src="封面图片URL" alt="文章标题" class="w-full h-auto">
+        </div>
+
+        <!-- 文章正文 -->
+        <div class="prose prose-lg max-w-none">
+          <!-- 文章内容将在这里动态插入 -->
+        </div>
+
+        <!-- 文章标签 -->
+        <div class="mt-12 flex flex-wrap gap-3">
+          <a href="#" class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors">
+            标签1
+          </a>
+          <a href="#" class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors">
+            标签2
+          </a>
+        </div>
+
+        <!-- 分享按钮 -->
+        <div class="mt-12 flex items-center justify-center space-x-4">
+          <button class="w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex items-center justify-center">
+            <i class="fa fa-weibo"></i>
+          </button>
+          <button class="w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex items-center justify-center">
+            <i class="fa fa-wechat"></i>
+          </button>
+          <button class="w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex items-center justify-center">
+            <i class="fa fa-link"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 相关文章 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-8 text-center">相关文章</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- 相关文章卡片将在这里动态插入 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 评论区 -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8">评论</h2>
+        
+        <!-- 评论表单 -->
+        <form class="space-y-6 mb-12">
+          <div>
+            <label for="comment" class="block text-sm font-medium text-gray-700 mb-2">写下你的评论</label>
+            <textarea id="comment" name="comment" rows="4" required
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"></textarea>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">昵称</label>
+              <input type="text" id="name" name="name" required
+                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors">
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">邮箱</label>
+              <input type="email" id="email" name="email" required
+                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors">
+            </div>
+          </div>
+          
+          <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+            提交评论
+          </button>
+        </form>
+
+        <!-- 评论列表 -->
+        <div class="space-y-8">
+          <!-- 评论项将在这里动态插入 -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 导入页脚 -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // 导入页头页脚和其他通用功能的JavaScript代码
+  </script>
+</body>
+</html>

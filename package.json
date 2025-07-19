@@ -1,0 +1,30 @@
+{
+  "name": "everleaf-blog",
+  "version": "1.0.0",
+  "description": "一个关于生活、文字与影像的个人博客",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "npm run optimize-images && npm run minify",
+    "optimize-images": "imagemin images/* --out-dir=dist/images",
+    "minify": "html-minifier --input-dir ./ --output-dir ./dist --file-ext html --collapse-whitespace --remove-comments --minify-css true --minify-js true"
+  },
+  "keywords": [
+    "blog",
+    "photography",
+    "life",
+    "writing"
+  ],
+  "author": "Tate",
+  "license": "MIT",
+  "devDependencies": {
+    "html-minifier": "^4.0.0",
+    "imagemin-cli": "^7.0.0",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.0",
+    "alpinejs": "^3.12.0",
+    "lightgallery": "^2.7.1"
+  }
+}

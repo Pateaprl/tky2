@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>摄影作品 | 天空云 - 定格生活之美</title>
+  <meta name="description" content="天空云的摄影作品集，包含自然风光、城市建筑、人文纪实等多个主题。用镜头记录生活中的每一个精彩瞬间。">
+  <meta name="keywords" content="摄影作品,自然风光,城市建筑,人文纪实,静物摄影">
+  
+  <!-- Open Graph 标签 -->
+  <meta property="og:title" content="摄影作品 | 天空云">
+  <meta property="og:description" content="用镜头捕捉生活中的光影之美，定格每一个值得纪念的瞬间。">
+  <meta property="og:image" content="https://everleaf.cn/images/photos-cover.jpg">
+  <meta property="og:url" content="https://everleaf.cn/photos.html">
+  
+  <!-- 规范链接 -->
+  <link rel="canonical" href="https://everleaf.cn/photos.html">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="/styles/global.css" rel="stylesheet">
+  
+  <!-- 添加 lightbox 支持 -->
+  <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lg-zoom.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#69B1FF',
+            accent: '#36CFC9',
+            neutral: '#F5F7FA',
+            dark: '#1D2129',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+</head>
+<body class="font-inter bg-neutral text-dark min-h-screen">
+  <!-- 导入页头 -->
+  <div id="header-placeholder"></div>
+
+  <!-- 页面标题区 -->
+  <section class="pt-32 pb-20 bg-gradient-to-b from-blue-50 to-neutral relative overflow-hidden">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6 text-shadow-lg">摄影作品</h1>
+        <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+          用镜头捕捉生活中的光影之美，定格每一个值得纪念的瞬间
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 摄影作品展示区 -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- 分类筛选 -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button class="px-5 py-2 rounded-full bg-primary text-white shadow-md filter-btn" data-category="all">全部作品</button>
+        <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50 filter-btn" data-category="nature">自然风光</button>
+        <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50 filter-btn" data-category="city">城市建筑</button>
+        <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50 filter-btn" data-category="people">人文纪实</button>
+        <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50 filter-btn" data-category="still">静物小品</button>
+      </div>
+
+      <!-- 照片网格 -->
+      <div id="lightgallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 照片项 -->
+        <a href="https://picsum.photos/id/1015/1200/800" 
+           class="photo-item" 
+           data-category="nature"
+           data-sub-html="<h4>山间云海日出</h4><p>拍摄于黄山风景区 | Canon EOS R5 | 2025.06.12</p>">
+          <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-w-4 aspect-h-3">
+            <img src="https://picsum.photos/id/1015/600/400" 
+                 alt="山间云海日出" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <h3 class="text-white text-xl font-semibold">山间云海日出</h3>
+                <p class="text-white/80 mt-2">拍摄于黄山风景区</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        
+        <!-- 更多照片项... -->
+      </div>
+
+      <!-- 加载更多按钮 -->
+      <div class="text-center mt-12">
+        <button id="loadMoreBtn" class="inline-flex items-center px-6 py-3 bg-white border border-primary text-primary rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+          加载更多作品 <i class="fa fa-angle-right ml-2"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 导入页脚 -->
+  <div id="footer-placeholder"></div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script>
+    // 导入页头页脚
+    fetch('/components/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+    
+    fetch('/components/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+
+    // 初始化 lightgallery
+    lightGallery(document.getElementById('lightgallery'), {
+      plugins: [lgZoom],
+      speed: 500,
+      selector: '.photo-item'
+    });
+
+    // 分类筛选
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // 更新按钮状态
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('bg-white', 'text-gray-600');
+        });
+        btn.classList.remove('bg-white', 'text-gray-600');
+        btn.classList.add('bg-primary', 'text-white');
+
+        const category = btn.dataset.category;
+        const items = document.querySelectorAll('.photo-item');
+        
+        items.forEach(item => {
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 返回顶部和导航栏效果
+    const navbar = document.getElementById('navbar');
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2', 'shadow-md');
+        navbar.classList.remove('py-4');
+        
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        navbar.classList.add('py-4');
+        navbar.classList.remove('py-2', 'shadow-md');
+        
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+  </script>
+</body>
+</html>

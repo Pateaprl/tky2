@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生活记录 | 天空云 - 记录生活的美好瞬间</title>
+  <meta name="description" content="天空云的生活记录专栏，分享旅行见闻、日常生活、读书感悟等精彩内容。在这里，让我们一起发现生活中的美好。">
+  <meta name="keywords" content="生活记录,旅行日记,读书笔记,随笔文章,生活感悟">
+  
+  <!-- Open Graph 标签 -->
+  <meta property="og:title" content="生活记录 | 天空云">
+  <meta property="og:description" content="天空云的生活记录专栏，分享旅行见闻、日常生活、读书感悟等精彩内容。">
+  <meta property="og:image" content="https://everleaf.cn/images/journal-cover.jpg">
+  <meta property="og:url" content="https://everleaf.cn/journal.html">
+  
+  <!-- 规范链接 -->
+  <link rel="canonical" href="https://everleaf.cn/journal.html">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="/styles/global.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#69B1FF',
+            accent: '#36CFC9',
+            neutral: '#F5F7FA',
+            dark: '#1D2129',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+</head>
+<body class="font-inter bg-neutral text-dark min-h-screen">
+  <!-- 导入页头 -->
+  <div id="header-placeholder"></div>
+  
+  <!-- 页面标题区 -->
+  <section class="pt-32 pb-20 bg-gradient-to-b from-blue-50 to-neutral relative overflow-hidden">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6 text-shadow-lg">生活记录</h1>
+        <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+          分享旅行见闻、记录生活点滴、书写心情感悟。在这里，每一个普通的日子都值得被铭记。
+        </p>
+        
+        <!-- 分类筛选 -->
+        <div class="flex flex-wrap justify-center gap-3 mb-8">
+          <button class="px-5 py-2 rounded-full bg-primary text-white shadow-md" data-category="all">全部文章</button>
+          <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50" data-category="travel">旅行见闻</button>
+          <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50" data-category="life">生活随笔</button>
+          <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50" data-category="books">读书感悟</button>
+          <button class="px-5 py-2 rounded-full bg-white text-gray-600 shadow-md hover:bg-gray-50" data-category="food">美食分享</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 文章列表区 -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
+        <!-- 文章卡片将通过JavaScript动态加载 -->
+      </div>
+      
+      <!-- 加载更多按钮 -->
+      <div class="text-center mt-12">
+        <button id="loadMoreBtn" class="inline-flex items-center px-6 py-3 bg-white border border-primary text-primary rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+          加载更多文章 <i class="fa fa-angle-right ml-2"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 导入页脚 -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // 导入页头页脚
+    fetch('/components/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+    
+    fetch('/components/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+
+    // 示例文章数据
+    const articles = [
+      {
+        id: 1,
+        title: "山间徒步，遇见美好",
+        date: "2025-07-15",
+        category: "travel",
+        excerpt: "周末与朋友相约去了郊外的森林公园徒步。雨后的山间空气格外清新，树叶上挂着晶莹的水珠，阳光透过树梢洒下斑驳的光影...",
+        image: "https://picsum.photos/id/1067/600/400",
+        link: "/articles/mountain-hiking.html"
+      },
+      {
+        id: 2,
+        title: "周末烘焙：自制全麦面包",
+        date: "2025-07-08",
+        category: "food",
+        excerpt: "尝试了新的全麦面包配方，耗时整整一天，但成品的口感和香气都令人满意。烘焙的过程很治愈，从揉面到发酵，每一步都充满期待...",
+        image: "https://picsum.photos/id/292/600/400",
+        link: "/articles/whole-wheat-bread.html"
+      },
+      // 更多文章...
+    ];
+    
+    function createArticleCard(article) {
+      return `
+        <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="h-56 overflow-hidden">
+            <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <i class="fa fa-calendar-o mr-2"></i>
+              <span>${article.date}</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 hover:text-primary transition-colors">${article.title}</h3>
+            <p class="text-gray-600 mb-4 line-clamp-3">${article.excerpt}</p>
+            <a href="${article.link}" class="inline-flex items-center text-primary font-medium hover:underline">
+              阅读更多 <i class="fa fa-long-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </article>
+      `;
+    }
+    
+    function filterArticles(category) {
+      const filteredArticles = category === 'all' 
+        ? articles 
+        : articles.filter(article => article.category === category);
+      
+      const grid = document.getElementById('articles-grid');
+      grid.innerHTML = filteredArticles.map(createArticleCard).join('');
+    }
+    
+    // 监听分类按钮点击
+    document.querySelectorAll('[data-category]').forEach(button => {
+      button.addEventListener('click', (e) => {
+        // 移除其他按钮的激活状态
+        document.querySelectorAll('[data-category]').forEach(btn => {
+          btn.classList.remove('bg-primary', 'text-white');
+          btn.classList.add('bg-white', 'text-gray-600');
+        });
+        
+        // 设置当前按钮的激活状态
+        e.target.classList.remove('bg-white', 'text-gray-600');
+        e.target.classList.add('bg-primary', 'text-white');
+        
+        filterArticles(e.target.dataset.category);
+      });
+    });
+    
+    // 初始化显示所有文章
+    filterArticles('all');
+  </script>
+  
+  <!-- 通用的导航和返回顶部脚本 -->
+  <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2', 'shadow-md');
+        navbar.classList.remove('py-4');
+        
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        navbar.classList.add('py-4');
+        navbar.classList.remove('py-2', 'shadow-md');
+        
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    // 返回顶部
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 移动端菜单
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const icon = menuBtn.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  </script>
+</body>
+</html>
